@@ -19,6 +19,11 @@ To get a csv of probabilities for the positive class from a binary classifier:
 	--write_csv
 	-score_column 1
 """
+# allow importing from one directory up
+import sys
+sys.path.append('..')
+import os.path
+
 import argparse
 
 from models import get_activations

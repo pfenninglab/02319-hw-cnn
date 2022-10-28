@@ -10,67 +10,39 @@ from a text configuration file.
 Track experiments, visualize performance metrics, and search hyperparameters using
 the `wandb` framework.
 
-## Cloning this repo
-It is recommended that you use the SSH authentication method to clone this repo.
+## Setup
 
 1. Start an interactive session:
 
 ```
-srun -n 1 -p interactive --pty bash
+srun -n 1 -p RM-shared --pty bash
 ```
-On `bridges`, use `-p RM-shared` instead.
 
-2. Create an SSH key and add it to your GitHub account, if you don't already have one:
-[Instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys). You only need to do the 3 steps "Check for existing SSH key"
-through "Add a new SSH key".
-
-3. Clone the repo. It is recommended that you clone into a directory just for repositories:
+2. Clone the repo. It is recommended that you clone into a directory just for repositories:
 
 ```
 mkdir ~/repos
 cd ~/repos
-git clone git@github.com:pfenninglab/mouse_sst.git
+git clone https://github.com/pfenninglab/02319-hw-cnn.git
 ```
 
-## Setup
-1. Install Miniconda:
-    1. Download the latest Miniconda installer. This is the correct installer for `lane` and `bridges`:
-    
-    ```
-    cd /tmp
-    curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    ```
-    
-    If you're not on `lane` or `bridges`, check your system's architecture and download the correct
-    installer from [Latest Miniconda Installer Links](https://docs.conda.io/en/latest/miniconda.html#latest-miniconda-installer-links).
-
-    2. Run the installer:
-    
-    ```
-    bash Miniconda3-latest-Linux-x86_64.sh
-    ```
-    
-    You will need to answer a few questions when prompted. The default values for each question should work.
-
-    3. Cleanup and exit the interactive node:
-    ```
-    rm Miniconda3-latest-Linux-x86_64.sh
-    exit
-    ```
-    This will return you to the head node on the cluster.
-
-2. Create conda environments:
-
-Ensure that you are on the head node. Go to this repo and run the setup script:
+3. Install Miniconda:
 ```
-cd ~/repos/mouse_sst
-bash setup.sh <cluster_name>
+bash /ocean/projects/bio200034p/csestili/02319-hw-cnn/install/Miniconda3-latest-Linux-x86_64.sh
 ```
-where `<cluster_name>` is `lane` or `bridges`.
 
-This creates the environments `keras2-tf27` (for training) and `keras2-tf24` (for SHAP/TF-MoDISco interpretation). This should take about 20 minutes.
+4. Change conda settings:
+```
+conda init bash
+```
 
-3. Create a `wandb` account: [signup link](https://app.wandb.ai/login?signup=true)
+5. Test conda environment:
+```
+conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
+```
+Note: This is a shared conda environment for the whole class. This was created to save everyone time installing packages. Usually when you use conda, you create and manage your own environments.
+
+6. Create a `wandb` account: [signup link](https://app.wandb.ai/login?signup=true)
  
  NOTE: `wandb` account usernames cannot be changed. I recommend creating a username like
  `<name>-cmu`, e.g. `csestili-cmu`, in case you want to have different accounts for personal
@@ -78,15 +50,13 @@ This creates the environments `keras2-tf27` (for training) and `keras2-tf24` (fo
 
 During account creation, you will be asked if you want to create a team. You do not need to do this.
 
-4. Log in to `wandb` on `lane`:
+7. Log in to `wandb` on the PSC:
 ```
-srun -n 1 -p interactive --pty bash
 conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
 wandb login
 ```
-On `bridges`, use `-p RM-shared` instead.
 
-Once you have logged in to `wandb`, you can leave the interactive session and return to the head node:
+8. Once you have logged in to `wandb`, you can leave the interactive session and return to the head node:
 ```
 exit
 ```
@@ -153,9 +123,9 @@ When you train a model, the training run gets an associated run ID.
 The trained model is saved in a directory called `wandb/run-<date_string>-<run_id>`.
 
 To find the directory associated with a given run:
-1. Go to that run in the `wandb` user interface, e.g. https://wandb.ai/cmu-cbd-pfenninglab/mouse-sst/runs/1gimqghi .
+1. Go to that run in the `wandb` user interface, e.g. https://wandb.ai/<wandb username>/02319-hw-cnn/runs/1gimqghi .
 2. The run ID is the part of that URL after `runs/`. E.g. for the above model, the run id is `1gimqghi`.
-3. On `lane`, find the trained model with this run id. You can use the `find` command for this:
+3. On the PSC, find the trained model with this run id. You can use the `find` command for this:
 ```
 find wandb/ -wholename *<run id>*/files/model-final.h5
 ```
@@ -175,8 +145,8 @@ To evaluate a trained model on one or more validation sets:
 1. Edit `config-base.yaml` to include the paths to your datasets in  `additional_val_data_paths`, and the targets in `additional_val_targets`.
 2. Run evaluation on your datasets:
 ```
-cd mouse_sst/ (this repo)
-srun -p pfen3 -n 1 --gres gpu:1 --pty bash
+cd ~/repos/02319-hw-cnn/ # (this repo)
+srun -p GPU-shared -n 1 --gres gpu:1 --pty bash
 conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
 python scripts/validate.py -config config-base.yaml -model <path to model .h5 file>
 ```
@@ -203,11 +173,11 @@ additional_val_targets:
 
 You can get the activations from a trained model, either at the output layer or at an intermediate layer, using `scripts/get_activations.py`:
 ```
-cd mouse_sst/ (this repo)
-srun -p pfen3 -n 1 --gres gpu:1 --pty bash
+cd ~/repos/02319-hw-cnn/scripts/ # (this repo's scripts/ folder)
+srun -p GPU-shared -n 1 --gres gpu:1 --pty bash
 conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
 
-python scripts/get_activations.py \
+python get_activations.py \
   -model <path to model .h5>
   -in_file <path to input .fa, .bed, or .narrowPeak file> \
   [-in_genome <path to genome .fa file, if in_file is .bed or .narrowPeak>] \
