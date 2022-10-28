@@ -81,7 +81,7 @@ During account creation, you will be asked if you want to create a team. You do 
 4. Log in to `wandb` on `lane`:
 ```
 srun -n 1 -p interactive --pty bash
-conda activate keras2-tf27
+conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
 wandb login
 ```
 On `bridges`, use `-p RM-shared` instead.
@@ -177,7 +177,7 @@ To evaluate a trained model on one or more validation sets:
 ```
 cd mouse_sst/ (this repo)
 srun -p pfen3 -n 1 --gres gpu:1 --pty bash
-conda activate keras2-tf27
+conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
 python scripts/validate.py -config config-base.yaml -model <path to model .h5 file>
 ```
 This prints validation set metrics directly to your console.
@@ -205,7 +205,7 @@ You can get the activations from a trained model, either at the output layer or 
 ```
 cd mouse_sst/ (this repo)
 srun -p pfen3 -n 1 --gres gpu:1 --pty bash
-conda activate keras2-tf27
+conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
 
 python scripts/get_activations.py \
   -model <path to model .h5>

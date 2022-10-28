@@ -3,7 +3,7 @@
 # Usage: bash train.sh <path to config>
 
 # Activate environment
-source activate keras2-tf27
+source activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
 
 # Check environment variables
 if [[ -z $PARTITION_GPU ]]
@@ -22,4 +22,4 @@ then
     exit 1
 fi
 
-sbatch -p $PARTITION_GPU scripts/train_main.sb $config_path
+sbatch -p $PARTITION_GPU -t 08:00:00 scripts/train_main.sb $config_path

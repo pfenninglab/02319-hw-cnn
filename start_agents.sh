@@ -3,7 +3,7 @@
 # Usage: bash start_agents.sh <num_agents> <throttle> <sweep_id>
 
 # Activate environment
-source activate keras2-tf27
+source activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
 
 # Check environment variables
 if [[ -z $PARTITION_GPU ]]
@@ -25,4 +25,4 @@ then
 fi
 
 # Launch sweep
-sbatch -p $PARTITION_GPU --array=1-${num_agents}%${throttle} scripts/start_agent_main.sb ${sweep_id}
+sbatch -p $PARTITION_GPU -t 08:00:00 --array=1-${num_agents}%${throttle} scripts/start_agent_main.sb ${sweep_id}

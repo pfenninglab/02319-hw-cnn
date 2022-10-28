@@ -3,7 +3,7 @@
 # Usage: bash start_sweep.sh <path to sweep config>
 
 # Activate environment
-source activate keras2-tf27
+source activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
 
 # Check environment variables
 if [[ -z $PARTITION_NO_GPU ]]
