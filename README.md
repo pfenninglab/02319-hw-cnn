@@ -28,7 +28,7 @@ git clone https://github.com/pfenninglab/02319-hw-cnn.git
 
 3. Install Miniconda:
 ```
-bash /ocean/projects/bio200034p/csestili/02319-hw-cnn/install/Miniconda3-latest-Linux-x86_64.sh
+bash /ocean/projects/ibn200014p/csestili/02319-hw-cnn/install/Miniconda3-latest-Linux-x86_64.sh
 ```
 
 4. Change conda settings, and restart the interactive session:
@@ -40,7 +40,7 @@ srun -n 1 -p RM-shared --pty bash
 
 5. Test conda environment:
 ```
-conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
+conda activate /ocean/projects/ibn200014p/csestili/02319-hw-cnn/env/keras2-tf27
 ```
 Note: This is a shared conda environment for the whole class. This was created to save everyone time installing packages. Usually when you use conda, you create and manage your own environments.
 
@@ -54,7 +54,7 @@ During account creation, you will be asked if you want to create a team. You do 
 
 7. Log in to `wandb` on the PSC:
 ```
-conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
+conda activate /ocean/projects/ibn200014p/csestili/02319-hw-cnn/env/keras2-tf27
 wandb login
 ```
 
@@ -146,7 +146,7 @@ You can get the activations from a trained model, either at the output layer or 
 ```
 cd ~/repos/02319-hw-cnn/scripts/ # (this repo's scripts/ folder)
 srun -p GPU-shared -n 1 --gres gpu:1 --pty bash
-conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
+conda activate /ocean/projects/ibn200014p/csestili/02319-hw-cnn/env/keras2-tf27
 
 python get_activations.py \
   -model <path to model .h5>

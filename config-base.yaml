@@ -17,8 +17,8 @@ train_data_paths:
   #     genome: <path to genome .fa>
   #     intervals: <path to interval .bed or .narrowPeak>
   value:
-    - /ocean/projects/bio200034p/csestili/02319-hw-cnn/data/mouse_SST_neg_TRAIN.fa
-    - /ocean/projects/bio200034p/csestili/02319-hw-cnn/data/mouse_SST_pos_TRAIN.fa
+    - /ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/mouse_SST_neg_TRAIN.fa
+    - /ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/mouse_SST_pos_TRAIN.fa
 
 train_targets:
   desc: Targets corresponding to each training data path.
@@ -32,8 +32,8 @@ train_targets:
 val_data_paths:
   desc: Paths to FASTA, BED, or NarrowPeak files for validation data.
   value:
-    - /ocean/projects/bio200034p/csestili/02319-hw-cnn/data/mouse_SST_neg_VAL.fa
-    - /ocean/projects/bio200034p/csestili/02319-hw-cnn/data/mouse_SST_pos_VAL.fa
+    - /ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/mouse_SST_neg_VAL.fa
+    - /ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/mouse_SST_pos_VAL.fa
 
 val_targets:
   desc: Targets corresponding to each validation data path.
@@ -48,16 +48,16 @@ targets_are_classes:
 additional_val_data_paths:
   desc: Paths to additional validation datasets. Metrics will be reported for each set separately.
   value:
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval1_mm10_VAL.fa]
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval2_hg38_VAL.fa]
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval3_hg38_VAL.fa]
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval4_mm10_VAL.fa]
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval5_mm10_VAL.fa]
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval6_mm10_VAL.fa]
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval7_mm10_VAL.fa]
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval8_mm10_VAL.fa]
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval9_mm10_VAL.fa]
-    - [/ocean/projects/bio200034p/csestili/02319-hw-cnn/data/Eval10_mm10_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval1_mm10_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval2_hg38_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval3_hg38_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval4_mm10_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval5_mm10_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval6_mm10_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval7_mm10_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval8_mm10_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval9_mm10_VAL.fa]
+    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval10_mm10_VAL.fa]
 
 additional_val_targets:
   desc: Targets corresponding to additional validation paths.
