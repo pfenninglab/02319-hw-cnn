@@ -138,37 +138,6 @@ This will give you a path to the trained model.
 To get the final model, use `model-final.h5`.
 To get the model with the lowest validation loss, use `model-best.h5`.
 
-### Evaluating a trained model
-
-To evaluate a trained model on one or more validation sets:
-
-1. Edit `config-base.yaml` to include the paths to your datasets in  `additional_val_data_paths`, and the targets in `additional_val_targets`.
-2. Run evaluation on your datasets:
-```
-cd ~/repos/02319-hw-cnn/ # (this repo)
-srun -p GPU-shared -n 1 --gres gpu:1 --pty bash
-conda activate /ocean/projects/bio200034p/csestili/02319-hw-cnn/env/keras2-tf27
-python scripts/validate.py -config config-base.yaml -model <path to model .h5 file>
-```
-This prints validation set metrics directly to your console.
-To export the results to a .csv file, you can also use the flag `-csv <path to output .csv file>`.
-
-**NOTE:** You can pass multiple validation datasets in to `additional_val_data_paths`. Each validation dataset can have 1 or more correct ground truth labels. Metrics for each dataset are reported separately. This is useful when some of your datasets have only positive examples, some have only negative examples, and some have a mixture of positive and negative examples. E.g.
-
-```
-additional_val_data_paths:
-  value:
-    - [positive_set_A.fa]
-    - [negative_set_B.fa]
-    - [negative_set_C.fa, positive_set_C.fa]
-
-additional_val_targets:
-  value:
-    - [1]
-    - [0]
-    - [0, 1]
-```
-
 ### Get activations from a trained model
 
 You can get the activations from a trained model, either at the output layer or at an intermediate layer, using `scripts/get_activations.py`:
@@ -209,19 +178,3 @@ pred(revcomp(example_n))
 ```
 To exclude reverse complement sequences, pass `--no_reverse_complement`.
 
-## Preprocessing
-Currently, models expect all input sequences to be the same length, and will fail with a `ValueError`
-if this is not the case.
-
-If you have a `.bed` or `.narrowPeak` file with intervals of different lengths, you can use
-`preprocessing.py` to produce another file with intervals of standardized lengths. Specifically,
-the following preprocessing is applied:
-
-**Input:** `length`, the desired standardized length.
-1. Duplicate intervals are removed.
-2. Each interval is replaced with another interval that has the same summit center, but is `length` bases long.
-
-Usage:
-```
-python preprocessing.py expand_peaks -b <input .bed file> -o <output .bed file> -l <integer length>
-```
