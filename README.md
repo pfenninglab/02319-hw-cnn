@@ -31,9 +31,11 @@ git clone https://github.com/pfenninglab/02319-hw-cnn.git
 bash /ocean/projects/bio200034p/csestili/02319-hw-cnn/install/Miniconda3-latest-Linux-x86_64.sh
 ```
 
-4. Change conda settings:
+4. Change conda settings, and restart the interactive session:
 ```
 conda init bash
+exit
+srun -n 1 -p RM-shared --pty bash
 ```
 
 5. Test conda environment:
