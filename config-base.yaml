@@ -45,33 +45,33 @@ targets_are_classes:
   desc: Whether to treat targets as a set of discrete classes (classification) or as continuous values (regression).
   value: true
 
-additional_val_data_paths:
-  desc: Paths to additional validation datasets. Metrics will be reported for each set separately.
-  value:
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval1_mm10_VAL.fa]
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval2_hg38_VAL.fa]
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval3_hg38_VAL.fa]
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval4_mm10_VAL.fa]
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval5_mm10_VAL.fa]
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval6_mm10_VAL.fa]
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval7_mm10_VAL.fa]
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval8_mm10_VAL.fa]
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval9_mm10_VAL.fa]
-    - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval10_mm10_VAL.fa]
+# additional_val_data_paths:
+#   desc: Paths to additional validation datasets. Metrics will be reported for each set separately.
+#   value:
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval1_mm10_VAL.fa]
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval2_hg38_VAL.fa]
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval3_hg38_VAL.fa]
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval4_mm10_VAL.fa]
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval5_mm10_VAL.fa]
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval6_mm10_VAL.fa]
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval7_mm10_VAL.fa]
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval8_mm10_VAL.fa]
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval9_mm10_VAL.fa]
+#     - [/ocean/projects/ibn200014p/csestili/02319-hw-cnn/data/Eval10_mm10_VAL.fa]
 
-additional_val_targets:
-  desc: Targets corresponding to additional validation paths.
-  value:
-    - [1]
-    - [0]
-    - [1]
-    - [0]
-    - [1]
-    - [1]
-    - [0]
-    - [1]
-    - [1]
-    - [0]
+# additional_val_targets:
+#   desc: Targets corresponding to additional validation paths.
+#   value:
+#     - [1]
+#     - [0]
+#     - [1]
+#     - [0]
+#     - [1]
+#     - [1]
+#     - [0]
+#     - [1]
+#     - [1]
+#     - [0]
 
 # Training
 
